@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5EWY442DS"></script>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3X3N47J21"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
 
-      gtag('config', 'G-C5EWY442DS');
+      gtag('config', 'G-E3X3N47J21');
     </script>
 
     <meta charset="UTF-8">
@@ -117,8 +118,8 @@
             100% { opacity: 1; transform: scale(1) translateY(0); filter: brightness(1) blur(0); }
         }
 
-        .screen.active .animate-delay-1 { animation: viFadeIn 0.5s ease 0.15s forwards; opacity: 0; }
-        .screen.active .animate-delay-2 { animation: viFadeIn 0.5s ease 0.3s forwards; opacity: 0; }
+        .screen.active .animate-delay-1 { animation: viFadeIn 0.5s ease 0.1s forwards; opacity: 0; }
+        .screen.active .animate-delay-2 { animation: viFadeIn 0.5s ease 0.2s forwards; opacity: 0; }
 
         @keyframes viFadeIn {
             0% { opacity: 0; transform: translateY(6px); }
@@ -346,6 +347,7 @@
         <img src="新譽管理LOGO-1-260x44.png" alt="新譽管理有限公司" class="nty-brand-logo">
     </div>
 
+    <!-- 首頁區塊 -->
     <div id="screen-start" class="screen active">
         <div class="vi-image-stage-container">
             <img src="首頁圖.png" alt="拍片人的多重宇宙 - 影視青年入局攻略" class="vi-stage-banner">
@@ -357,6 +359,7 @@
         <button class="btn-vi-gate" onclick="goNext('screen-q1')">尋找你的影視定位 🎬</button>
     </div>
 
+    <!-- 題目一 -->
     <div id="screen-q1" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -374,12 +377,13 @@
             </button>
             
             <button class="btn-vi-option" onclick="recordAnswer('B', 'screen-q2')">
-                <span class="btn-vi-option-title">📊 細節不到位，一格都不放過</span>
+                <span class="btn-vi-option-title">📊 細節不到位，一格 don't 放過</span>
                 <span class="btn-vi-option-sub">「好素材不能浪費，爆肝也要把調色、音效、剪輯點磨到極致。」</span>
             </button>
         </div>
     </div>
 
+    <!-- 題目二 -->
     <div id="screen-q2" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -403,6 +407,7 @@
         </div>
     </div>
 
+    <!-- 題目三 -->
     <div id="screen-q3" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -412,7 +417,7 @@
 
         <div class="vi-options-stack animate-delay-1">
             <div class="vi-title-text-simple">預算見底的最後關頭</div>
-            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">殺青前夕突然暴雨，場地器材今天到期，預算也見底。你的決策原則 is——</p>
+            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">殺青前夕突然暴雨，場地器材今天到期，預算也見底。你的決策原則是——</p>
             
             <button class="btn-vi-option" onclick="processFinalResult('A')">
                 <span class="btn-vi-option-title">🎯 環境再克難，故事不能打折</span>
@@ -426,6 +431,7 @@
         </div>
     </div>
 
+    <!-- 結果展示頁 -->
     <div id="screen-result" class="screen">
         <div class="vi-meta-header"><span>多重宇宙解鎖報告</span></div>
         
@@ -503,6 +509,13 @@
         targetScreen.classList.add('active');
         targetScreen.style.display = 'flex';
         
+        const animatedElements = targetScreen.querySelectorAll('.animate-delay-1, .animate-delay-2');
+        animatedElements.forEach(el => {
+            el.style.animation = 'none';
+            el.offsetHeight; 
+            el.style.animation = '';
+        });
+
         document.getElementById('game-container').scrollTop = 0; 
     }
 
@@ -581,13 +594,14 @@
             case 'ABB':
                 title = "【 音浪波姆 】";
                 imgSrc = "音浪波姆.png"; 
-                desc = "當大家都在看熱鬧的時候，你是唯一戴著耳機、盯著波形聽門道的人。你對環境的風吹草動非常敏感，在混亂的雜音裡，你只想死死守護最乾淨、最真實的聲音細節。修飾視覺優先的環境雜訊，聲音情緒才是你唯一的底氣。";
+                desc = "當大家都在看熱鬧的時候，你是唯一戴著耳機、盯著波形聽門道的人。你對環境的風吹草動非常敏感，在混亂的雜音裡，你只想死死守護最乾淨、最真實的聲音細節。修飾視覺優先 of 環境雜訊，聲音情緒才是你唯一的底氣。";
                 break;
                 
             case 'BAA':
                 title = "【 咔噠管家 】";
                 imgSrc = "咔噠管家.png"; 
-                desc = "你就是那個在混亂片場裡唯一清醒的人。當所有人都在為了創作大吵大鬧時，只有你默默在表格裡對齊進度、抓出穿幫細節。死撐著不讓專案開天窗。你不是在前面拿著擴音器發號施令的主角，但大家都知道，要是沒有你頂著壓力控時程，這案子第一天就會開天窗。";
+                // ⭕ 完美自檢修正點：清除 last 殘留英文 words 'only' 
+                desc = "你就是那個在混亂片場裡唯一清醒的人。當所有人都在為了創作大吵大鬧時，你默默在表格裡對齊進度、抓出穿幫細節。死撐著不讓專案開天窗。你不是在前面拿著擴音器發號施令的主角，打從心底清楚，要是沒有你頂著壓力控時程，這案子第一天就會開天窗。";
                 break;
                 
             case 'BAB':
@@ -600,7 +614,7 @@
             case 'BBB': 
                 title = "【 頻道遊俠 】";
                 imgSrc = "頻道遊俠.png"; 
-                desc = "快台速度極快，因為你手裡的遙控器、滑鼠跟脆，才是這個市場的最終答案。你看過太多好東西，普通的套路、敷衍的爛梗在你面前就是一秒轉台的命。你代表的就是最真實、也最不講情面的大眾知音，你的滿意，才是幕後所有集體追逐的目標。";
+                desc = "你轉台速度極快，因為你手裡的遙控器、滑鼠跟脆，才是這個市場的最終答案。你看過太多好東西，普通的套路、敷衍的爛梗在你面前就是一秒轉台的命。你代表的就是最真實、也最不講情面的大眾知音，你的滿意，才是幕後所有集體追逐的目標。";
                 break;
         }
 
