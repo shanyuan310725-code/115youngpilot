@@ -117,9 +117,8 @@
             100% { opacity: 1; transform: scale(1) translateY(0); filter: brightness(1) blur(0); }
         }
 
-        /* 🛠️ Bug 修正點：確保所有延遲加載的區塊在 screen 激活時能正確顯示不隱形 */
-        .screen.active .animate-delay-1 { animation: viFadeIn 0.5s ease 0.1s forwards; opacity: 0; }
-        .screen.active .animate-delay-2 { animation: viFadeIn 0.5s ease 0.2s forwards; opacity: 0; }
+        .screen.active .animate-delay-1 { animation: viFadeIn 0.5s ease 0.15s forwards; opacity: 0; }
+        .screen.active .animate-delay-2 { animation: viFadeIn 0.5s ease 0.3s forwards; opacity: 0; }
 
         @keyframes viFadeIn {
             0% { opacity: 0; transform: translateY(6px); }
@@ -295,7 +294,6 @@
         }
         .vi-card-time { font-size: 1.6rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
         .vi-time-tag { background: #6366f1; font-size: 0.85rem; padding: 2px 8px; border-radius: 6px; font-weight: bold; }
-        .vi-layout-card var { font-style: normal; }
         .vi-card-meta-line { font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px; margin-bottom: 8px; letter-spacing: 0.02em; }
         
         /* 雙欄並列排矩陣 */
@@ -348,7 +346,6 @@
         <img src="新譽管理LOGO-1-260x44.png" alt="新譽管理有限公司" class="nty-brand-logo">
     </div>
 
-    <!-- 首頁區塊 -->
     <div id="screen-start" class="screen active">
         <div class="vi-image-stage-container">
             <img src="首頁圖.png" alt="拍片人的多重宇宙 - 影視青年入局攻略" class="vi-stage-banner">
@@ -360,7 +357,6 @@
         <button class="btn-vi-gate" onclick="goNext('screen-q1')">尋找你的影視定位 🎬</button>
     </div>
 
-    <!-- 題目一 -->
     <div id="screen-q1" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -374,7 +370,7 @@
             
             <button class="btn-vi-option" onclick="recordAnswer('A', 'screen-q2')">
                 <span class="btn-vi-option-title">✨ 沒有記憶點，等於白拍</span>
-                <span class="btn-vi-option-sub">「一成不變太可惜，寧切打掉重練，也要把情感張力逼出來。」</span>
+                <span class="btn-vi-option-sub">「一成不變太可惜，寧可打掉重練，也要把情感張力逼出來。」</span>
             </button>
             
             <button class="btn-vi-option" onclick="recordAnswer('B', 'screen-q2')">
@@ -384,7 +380,6 @@
         </div>
     </div>
 
-    <!-- 題目二 -->
     <div id="screen-q2" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -408,7 +403,6 @@
         </div>
     </div>
 
-    <!-- 題目三 -->
     <div id="screen-q3" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -418,7 +412,7 @@
 
         <div class="vi-options-stack animate-delay-1">
             <div class="vi-title-text-simple">預算見底的最後關頭</div>
-            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">殺青前夕突然暴雨，場地器材今天到期，預算也見底。你的決策原則是——</p>
+            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">殺青前夕突然暴雨，場地器材今天到期，預算也見底。你的決策原則 is——</p>
             
             <button class="btn-vi-option" onclick="processFinalResult('A')">
                 <span class="btn-vi-option-title">🎯 環境再克難，故事不能打折</span>
@@ -432,7 +426,6 @@
         </div>
     </div>
 
-    <!-- 結果展示頁 -->
     <div id="screen-result" class="screen">
         <div class="vi-meta-header"><span>多重宇宙解鎖報告</span></div>
         
@@ -510,14 +503,6 @@
         targetScreen.classList.add('active');
         targetScreen.style.display = 'flex';
         
-        // 確保內部延遲加載的物件能重新觸發淡入動畫，解決無法顯示的問題
-        const animatedElements = targetScreen.querySelectorAll('.animate-delay-1, .animate-delay-2');
-        animatedElements.forEach(el => {
-            el.style.animation = 'none';
-            el.offsetHeight; // 觸發重繪
-            el.style.animation = '';
-        });
-
         document.getElementById('game-container').scrollTop = 0; 
     }
 
