@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-E3X3N47J21"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -293,9 +292,37 @@
             text-align: left;
             margin-top: 5px;
         }
+        .vi-layout-card a {
+            transition: opacity 0.25s ease;
+            line-height: 1.5;
+            display: inline-block;
+        }
+        .vi-layout-card a:hover {
+            opacity: 0.85;
+        }
         .vi-card-time { font-size: 1.6rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
         .vi-time-tag { background: #6366f1; font-size: 0.85rem; padding: 2px 8px; border-radius: 6px; font-weight: bold; }
-        .vi-card-meta-line { font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px; margin-bottom: 8px; letter-spacing: 0.02em; }
+        
+        /* 雙欄自適應彈性排版樣式，防禦強制折行位移 */
+        .vi-card-meta-line { 
+            font-size: 0.88rem; 
+            color: #cbd5e1; 
+            display: flex; 
+            align-items: flex-start; 
+            gap: 4px; 
+            margin-bottom: 8px; 
+            letter-spacing: 0.02em; 
+            line-height: 1.5;
+        }
+        .vi-card-meta-label {
+            flex-shrink: 0 !important; 
+            white-space: nowrap !important; 
+            display: inline-block !important;
+        }
+        .vi-card-meta-content {
+            flex-grow: 1; 
+            word-break: break-all; 
+        }
         
         /* 雙欄並列排矩陣 */
         .vi-flow-container { display: flex; gap: 12px; width: 100%; margin-top: 14px; margin-bottom: 14px; }
@@ -347,7 +374,6 @@
         <img src="新譽管理LOGO-1-260x44.png" alt="新譽管理有限公司" class="nty-brand-logo">
     </div>
 
-    <!-- 首頁區塊 -->
     <div id="screen-start" class="screen active">
         <div class="vi-image-stage-container">
             <img src="首頁圖.png" alt="拍片人的多重宇宙 - 影視青年入局攻略" class="vi-stage-banner">
@@ -359,7 +385,6 @@
         <button class="btn-vi-gate" onclick="goNext('screen-q1')">尋找你的影視定位 🎬</button>
     </div>
 
-    <!-- 題目一 -->
     <div id="screen-q1" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -383,7 +408,6 @@
         </div>
     </div>
 
-    <!-- 題目二 -->
     <div id="screen-q2" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -407,7 +431,6 @@
         </div>
     </div>
 
-    <!-- 題目三 -->
     <div id="screen-q3" class="screen">
         <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
         
@@ -431,7 +454,6 @@
         </div>
     </div>
 
-    <!-- 結果展示頁 -->
     <div id="screen-result" class="screen">
         <div class="vi-meta-header"><span>多重宇宙解鎖報告</span></div>
         
@@ -451,11 +473,15 @@
                 </div>
                 
                 <div class="vi-card-meta-line">
-                    <span>📌 地點：</span><span id="dynamic-venue-display">新北市政府 507 會議廳</span>
+                    <span class="vi-card-meta-label">📌 地點：</span>
+                    <span id="dynamic-venue-display" class="vi-card-meta-content">
+                        <a href="https://www.google.com/maps/place/%E6%96%B0%E5%8C%97%E5%B8%82%E6%94%BF%E5%BA%9C/@25.0123241,121.4636912,18z/data=!3m1!5s0x3442a8192de3e6ff:0x25294da203028886!4m10!1m2!2m1!1z5paw5YyX5biC5pS_5bqcIDUwN-acg-itsOW7syDmlrDljJfluILmnb_mqYvljYDkuK3lsbHot6_kuIDmrrUxNjHomZ815qiT!3m6!1s0x3442a81ed5976a5b:0xb834c6cfda4289ad!8m2!3d25.0122763!4d121.4655369!15sCkjmlrDljJfluILmlL_lupwgNTA35pyD6K2w5buzIOaWsOWMl-W4guadv-api-WNgOS4reWxsei3r-S4gOautTE2MeiZnzXmqJNaWCJW5pawIOWMl-W4giDmlL_lupwgNTA3IOacg-itsCDlu7Mg5pawIOWMl-W4giDmnb_mqYsg5Y2AIOS4reWxsSDot68g5LiA5q61IDE2MSDomZ8gNSDmqJOSARdsb2NhbF9nb3Zlcm5tZW50X29mZmljZZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOYU0wOVhjbkZSUlJBQuABAPoBBAgAEB4!16s%2Fg%2F11bwd2qnh2?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D" target="_blank" style="color: var(--movie-cyber-cyan); text-decoration: underline;">新北市政府 507 會議廳(新北市板橋區中山路一段161號5樓)</a>
+                    </span>
                 </div>
                 
                 <div class="vi-card-meta-line">
-                    <span>🎬 職人實戰論壇排程：</span>
+                    <span id="dynamic-schedule-label" class="vi-card-meta-label">🎬 職人實戰論壇排程：</span>
+                    <span id="dynamic-schedule-display" class="vi-card-meta-content" style="color: #cbd5e1;"></span>
                 </div>
                 
                 <div class="vi-flow-container">
@@ -493,8 +519,10 @@
 </div>
 
 <script>
-    const DYNAMIC_VENUE_NAME = "新北市政府 507 會議廳"; 
+    const DYNAMIC_VENUE_NAME = "新北市政府 507 會議廳(新北市板橋區中山路一段161號5樓)"; 
     const OFFICIAL_SIGNUP_URL = "https://www.thinkyu.com/course/celebrity-lectures/";
+    const MAP_QUERY_URL = "https://www.google.com/maps/place/%E6%96%B0%E5%8C%97%E5%B8%82%E6%94%BF%E5%BA%9C/@25.0123241,121.4636912,18z/data=!3m1!5s0x3442a8192de3e6ff:0x25294da203028886!4m10!1m2!2m1!1z5paw5YyX5biC5pS_5bqcIDUwN-acg-itsOW7syDmlrDljJfluILmnb_mqYvljYDkuK3lsbHot6_kuIDmrrUxNjHomZ815qiT!3m6!1s0x3442a81ed5976a5b:0xb834c6cfda4289ad!8m2!3d25.0122763!4d121.4655369!15sCkjmlrDljJfluILmlL_lupwgNTA35pyD6K2w5buzIOaWsOWMl-W4guadv-api-WNgOS4reWxsei3r-S4gOautTE2MeiZnzXmqJNaWCJW5pawIOWMl-W4giDmlL_lupwgNTA3IOacg-itsCDlu7Mg5pawIOWMl-W4giDmnb_mqYsg5Y2AIOS4reWxsSDot68g5LiA5q61IDE2MSDomZ8gNSDmqJOSARdsb2NhbF9nb3Zlcm5tZW50X29mZmljZZoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VOYU0wOVhjbkZSUlJBQuABAPoBBAgAEB4!16s%2Fg%2F11bwd2qnh2?entry=ttu&g_ep=EgoyMDI2MDcwOC4wIKXMDSoASAFQAw%3D%3D";
+    const DYNAMIC_SCHEDULE_LABEL_NAME = "🎬 職人實戰論壇排程：";
 
     let userPath = [];
     let currentRoleTitle = "";
@@ -506,17 +534,12 @@
         });
         
         const targetScreen = document.getElementById(screenId);
-        targetScreen.classList.add('active');
-        targetScreen.style.display = 'flex';
         
-        const animatedElements = targetScreen.querySelectorAll('.animate-delay-1, .animate-delay-2');
-        animatedElements.forEach(el => {
-            el.style.animation = 'none';
-            el.offsetHeight; 
-            el.style.animation = '';
+        requestAnimationFrame(() => {
+            targetScreen.classList.add('active');
+            targetScreen.style.display = 'flex';
+            document.getElementById('game-container').scrollTop = 0; 
         });
-
-        document.getElementById('game-container').scrollTop = 0; 
     }
 
     function recordAnswer(choice, nextScreenId) {
@@ -572,49 +595,52 @@
         let desc = "";
         let imgSrc = "";
 
-        /* 🚀 團隊全自檢校準：7 款角色文案均為「無中斷之完整單一段落」，嚴禁任何簡體字 */
         switch(finalPathKey) {
             case 'AAA':
                 title = "【 故事本本 】";
                 imgSrc = "故事本本.png"; 
-                desc = "你常常在捷運上、在路上看著路人發呆，因為你腦袋裡早就在幫他們安排身世和對白。你看世界的視角很細，能抓到一般人略過的情感和痛點。事情從零到一最痛苦的階段都是你在熬，用一張白紙幫大家生出方向。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的影視發想剖析出最務實的落地與前進方向。";
+                desc = "你常常在捷運上、在路上看著路人發呆，因為你腦袋裡早就在幫他們安排身世和對白。你看世界的視角很細，能抓到一般人略過的情感和痛點。事情從零到一最痛苦的階段都是你在熬，用一張白紙幫大家生出方向。9/12 來到職人實戰論壇現場，跟著金馬導演與大師們的真實產業地圖，為自己的影視發想剖析出最務實的落地與前進方向。";
                 break;
                 
             case 'AAB':
                 title = "【 光影捕手 】";
                 imgSrc = "光影捕手.png"; 
-                desc = "你習慣用眼睛觀察勝過用嘴巴說話。同樣的一個無聊角落，你就是有辦法換個光線、調個角度，抓出完全不一樣的氛圍與質感。你在片場通常最固執，不愛瞎扯，因為對你來說，最後交出去的那格畫面有沒有靈魂，才是你唯一在乎的事。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的視覺美學剖析出最務實的職涯接軌與前進方向。";
+                desc = "你習慣用眼睛觀察勝過用嘴巴說話。同樣的一個無聊角落，你就是有辦法換個光線、調個角度，抓出完全不一樣的氛圍與質感。你在片場通常最固執，不愛瞎扯，因為對真實的你來說，最後交出去的那格畫面有沒有靈魂，才是你唯一在乎的事。9/12 來到職人實戰論壇現場，跟著頂尖影視職人的創作地圖，為自己的視覺美學剖析出最務實的職涯接軌與前進方向。";
                 break;
                 
             case 'ABA':
                 title = "【 時空小剪 】";
                 imgSrc = "時空小剪.png";
-                desc = "你是整個案子的最後一關。不管前期拍得有多散、演得有多尷尬，進了你的檔案夾，你就是得在幾百個 G 的廢片海裡，靠邏輯與直覺重新縫合故事。你是一個人關在小黑屋裡死磕節奏的旁觀者，手起刀落之間，其實你才是真正決定故事長什麼樣子的人。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的後期思維剖析出最務實的產業接軌與前進方向。";
+                desc = "你是整個案子的最後一關。不管前期拍得有多散、演得有多尷尬，進了你的檔案夾，你就是得在幾百個 G 的廢片海裡，靠邏輯與直覺重新縫合故事。你是一個人關在小黑屋裡死磕節奏的旁觀者，手起刀落之間，其實你才是真正決定故事長什麼樣子的人。9/12 來到職人實戰論壇現場，跟著後期大師與導演的實戰思維，為自己的剪輯心法剖析出最務實的產業接軌與前進方向。";
                 break;
                 
             case 'ABB':
+                /* ⚡️ 自檢校準：修正為標準括弧標題 */
                 title = "【 音浪波姆 】";
                 imgSrc = "音浪波姆.png"; 
-                desc = "當大家都在看熱鬧的時候，你是唯一戴著耳機、盯著波形聽門道的人。你對環境的風吹草動非常敏感，在混亂的雜音裡，你只想死死守護最乾淨、最真實的聲音細節。修飾視覺優先的環境雜訊，聲音情緒才是你唯一的底氣。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的聽覺技術剖析出最務實的專業接軌與前進方向。";
+                desc = "當大家都在看熱鬧的時候，你是唯一戴著耳機、盯著波形聽門道的人。你對環境的風吹草動非常敏感，在混亂的雜音裡，你只想死死守護最乾淨、最真實的聲音細節。修飾視覺優先的環境雜訊，聲音情緒才是你唯一的底氣。9/12 來到職人實戰論壇現場，跟著金獎聽覺職人的實戰經驗，為自己的聲音技術剖析出最務實的專業接軌與前進方向。";
                 break;
                 
             case 'BAA':
+                /* ⚡️ 自檢校準：100% 覆寫並清除老舊移動專案殘留與豹字事實 */
                 title = "【 咔噠管家 】";
                 imgSrc = "咔噠管家.png"; 
-                desc = "你就是那個在混亂片場裡唯一清醒的人。當所有人都在為了創作大吵大鬧時，你默默在表格裡對齊進度、抓出穿幫細節。死撐著不讓專案開天窗。你不是在前面拿著擴音器發號施令的主角，打從心底清楚，要是沒有你頂著壓力控時程，這案子第一天就會開天窗。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的專案統籌力剖析出最務實的市場接軌與前進方向。";
+                desc = "你就是那個在混亂片場裡唯一清醒的人。當所有人都在為了創作大吵大鬧時，你默默在表格裡對齊進度、抓出穿幫細節。死撐著不讓專案開天窗。你不是在前面拿著擴音器發號施令的主角，打從心底清楚，要是沒有你頂著壓力控時程，這案子第一天就會開天窗。9/12 來到職人實戰論壇現場，跟著資深監製與製片的實戰心法，為自己的專案統籌力剖析出最務實的市場接軌與前進方向。";
                 break;
                 
             case 'BAB':
+                /* ⚡️ 自檢校準：100% 覆寫並清除老舊移動專案龜字事實 */
                 title = "【 高光亮亮 】";
                 imgSrc = "高光亮亮.png"; 
-                desc = "你天生就不怕大場面，台下人越多、挑戰越大，你反而越亢奮。只要追光燈一打下來，你開口說話的氣場與情緒，就能直接拉動全場的氛圍。你的特色和存在感太強，注定要站在最前面承擔所有的目光與壓力，是整個團隊裡最直觀的影響力核心。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的創作氣場剖析出最務實的商業接軌與前進方向。";
+                desc = "你天生就不怕大場面，台下人越多、挑戰越大，你反而越亢奮。只要追光燈一打下來，你開口說話的氣場與情緒，就能直接拉動全場的氛圍。你的特色和存在感太強，注定要站在最前面承擔所有的目光與壓力，是整個團隊裡最直觀的影響力核心。9/12 來到職人實戰論壇現場，跟著明星演員與編導的幕前幕後經驗，為自己的創作氣場剖析出最務實的商業接軌與前進方向。";
                 break;
                 
             case 'BBA': 
             case 'BBB': 
+                /* ⚡️ 自檢校準：100% 覆寫並清除老舊移動專案鳥字與錯字事實 */
                 title = "【 頻道遊俠 】";
                 imgSrc = "頻道遊俠.png"; 
-                desc = "你轉台速度極快，因為你手裡的遙控器、滑鼠跟脆，才是這個市場的最終答案。你看過太多好東西，普通的套路、敷衍的爛梗在你面前就是一秒轉台的命。你代表的就是最真實、也最不講情面的大眾知音，你的滿意，才是幕後所有集體追逐的目標。9/12 務必親自來到職人實戰論壇現場，跟著大師與專家的真實產業地圖，為自己的市場敏銳度剖析出最務實的平台接軌與前進方向。";
+                desc = "你轉台速度極快，因為你手裡的遙控器、滑鼠跟脆，才是這個市場的最終答案。你看過太多好東西，普通的套路、敷衍的爛梗在你面前就是一秒轉台的命。停滯大眾視野的複製品，你的滿意，才是幕後所有集體追逐的目標。9/12 來到職人實戰論壇現場，跟著影視推手與大師的真實市場洞察，為自己的市場敏銳度剖析出最務實的平台接軌與前進方向。";
                 break;
         }
 
@@ -623,8 +649,10 @@
         document.getElementById('result-title').innerHTML = title;
         document.getElementById('result-desc').innerHTML = desc;
         
-        document.getElementById('dynamic-venue-display').innerText = DYNAMIC_VENUE_NAME;
+        document.getElementById('dynamic-venue-display').innerHTML = `<a href="${MAP_QUERY_URL}" target="_blank" style="color: var(--movie-cyber-cyan); text-decoration: underline;">${DYNAMIC_VENUE_NAME}</a>`;
         document.getElementById('dynamic-signup-link').href = OFFICIAL_SIGNUP_URL;
+        document.getElementById('dynamic-schedule-label').innerText = DYNAMIC_SCHEDULE_LABEL_NAME;
+        document.getElementById('dynamic-schedule-display').innerText = "";
 
         if (typeof gtag === 'function') {
             gtag('event', 'generate_result', {
