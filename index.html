@@ -1,1 +1,566 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-C5EWY442DS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
 
+      gtag('config', 'G-C5EWY442DS');
+    </script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>拍片人的多重宇宙 - 影視青年入局攻略</title>
+    <style>
+        :root {
+            /* 🎬 影視專案專屬：黑曜石與螢光霓虹色彩矩陣 */
+            --movie-bg-deep: #03020c;          
+            --movie-neon-rose: #e11d48;        
+            --movie-neon-purple: #7c3aed;      
+            --movie-cyber-cyan: #00f2fe;       
+            --movie-gold-amber: #f59e0b;       
+            --movie-dark-card: rgba(8, 6, 26, 0.94);
+            --font-display: "Arial", "PingFang TC", "Microsoft JhengHei", sans-serif;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: var(--font-display); }
+        
+        body { 
+            background: var(--movie-bg-deep); 
+            color: #ffffff; 
+            display: flex; 
+            justify-content: center; 
+            align-items: center; 
+            min-height: 100vh; 
+            padding: 24px 12px;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: ''; position: absolute; top: 20%; left: 10%; width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%); filter: blur(40px); z-index: 0;
+        }
+        body::after {
+            content: ''; position: absolute; bottom: 20%; right: 10%; width: 250px; height: 250px;
+            background: radial-gradient(circle, rgba(225, 29, 72, 0.12) 0%, transparent 70%); filter: blur(40px); z-index: 0;
+        }
+
+        .bg-grid {
+            position: absolute; inset: 0; z-index: 0;
+            background: linear-gradient(rgba(124, 58, 237, 0.03) 1px, transparent 1px),
+                        linear-gradient(90deg, rgba(124, 58, 237, 0.03) 1px, transparent 1px);
+            background-size: 24px 24px;
+            mask-image: radial-gradient(circle at center, black, transparent 85%);
+            -webkit-mask-image: radial-gradient(circle at center, black, transparent 85%);
+        }
+
+        #game-container { 
+            width: 100%; max-width: 440px; 
+            min-height: 80vh;
+            background: var(--movie-dark-card); backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px);
+            border-radius: 28px; border: 1px solid rgba(124, 58, 237, 0.3); 
+            display: flex; flex-direction: column; overflow-x: hidden;
+            box-shadow: 0 20px 70px rgba(5, 3, 15, 0.9), 0 0 40px rgba(124, 58, 237, 0.15); position: relative; z-index: 1;
+        }
+
+        #game-container::before {
+            content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+            background: linear-gradient(90deg, var(--movie-neon-purple), var(--movie-neon-rose), var(--movie-cyber-cyan));
+            z-index: 10;
+        }
+
+        .nty-global-brand-header {
+            width: 100%;
+            padding-top: 24px;
+            padding-bottom: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0.75; 
+            z-index: 5;
+            pointer-events: none;
+        }
+        .nty-brand-logo {
+            height: 20px; 
+            width: auto;
+            object-fit: contain;
+            filter: brightness(1.05);
+        }
+
+        .screen { 
+            display: none; 
+            flex: 1; 
+            flex-direction: column; 
+            padding: 16px 24px 28px 24px; 
+            justify-content: space-between; 
+            width: 100%;
+            height: auto;
+        }
+
+        .screen#screen-result.active {
+            display: flex;
+            height: auto;
+            justify-content: flex-start;
+            gap: 16px; 
+        }
+
+        .screen.active { 
+            display: flex; 
+            animation: viPortalJump 0.65s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes viPortalJump {
+            0% { opacity: 0; transform: scale(0.97) translateY(8px); filter: brightness(0.7) blur(5px); }
+            100% { opacity: 1; transform: scale(1) translateY(0); filter: brightness(1) blur(0); }
+        }
+
+        .screen.active .animate-delay-1 { animation: viFadeIn 0.5s ease 0.15s forwards; opacity: 0; }
+        .screen.active .animate-delay-2 { animation: viFadeIn 0.5s ease 0.3s forwards; opacity: 0; }
+
+        @keyframes viFadeIn {
+            0% { opacity: 0; transform: translateY(6px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+
+        .vi-meta-header { display: flex; justify-content: space-between; align-items: center; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; color: #818cf8; opacity: 0.8; margin-bottom: 12px; }
+
+        .vi-image-stage-container {
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto 14px auto;
+            text-align: center;
+            position: relative;
+            height: auto;
+        }
+
+        .vi-stage-banner {
+            width: 100%;
+            height: auto;
+            object-fit: contain;
+            border-radius: 14px;
+            filter: drop-shadow(0px 8px 20px rgba(0,0,0,0.6));
+        }
+
+        .result-card-viewport {
+            width: 100%;
+            max-width: 340px; 
+            margin: 5px auto;
+            text-align: center;
+        }
+
+        .vi-character-card-img {
+            width: 100%;
+            height: auto;
+            max-height: 460px; 
+            object-fit: contain;
+            border-radius: 18px;
+            filter: drop-shadow(0px 12px 28px rgba(0,0,0,0.65));
+        }
+
+        .vi-desc { 
+            font-size: 0.92rem; 
+            line-height: 1.7; 
+            color: #94a3b8; 
+            text-align: justify; 
+            margin: 12px auto 24px auto; 
+            letter-spacing: 0.05em; 
+            word-break: normal; 
+            overflow-wrap: break-word;
+            max-width: 95%;
+        }
+
+        .vi-result-text-body { font-size: 0.95rem; line-height: 1.7; color: #cbd5e1; text-align: justify; padding: 0 4px; margin-bottom: 5px; word-break: normal; overflow-wrap: break-word; letter-spacing: 0.03em; }
+        .vi-layout-card .vi-result-text-body { font-size: 0.88rem; line-height: 1.6; }
+        .vi-title-text-simple { font-size: 1.35rem; font-weight: bold; text-align: center; color: #ffffff; margin: 8px 0; letter-spacing: 0.05em; word-break: normal; }
+        
+        .vi-options-stack { display: flex; flex-direction: column; gap: 14px; width: 100%; height: auto; }
+        
+        .btn-vi-option { 
+            background: rgba(255, 255, 255, 0.02); 
+            border: 1px solid rgba(124, 58, 237, 0.35); 
+            color: #e2e8f0; 
+            padding: 16px 20px; 
+            border-radius: 14px; 
+            font-size: 0.92rem; 
+            cursor: pointer; 
+            text-align: left; 
+            transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            height: auto;
+            word-break: normal;
+            overflow-wrap: break-word;
+            line-height: 1.6;
+        }
+        .btn-vi-option:hover { 
+            background: rgba(124, 58, 237, 0.12); 
+            border-color: var(--movie-cyber-cyan); 
+            transform: translateX(4px); 
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(0, 242, 254, 0.15);
+        }
+        .btn-vi-option-title { display: block; font-weight: bold; color: var(--movie-gold-amber); margin-bottom: 6px; font-size: 0.95rem; letter-spacing: 0.03em; text-align: left; }
+        .btn-vi-option-sub { display: block; font-size: 0.85rem; color: #94a3b8; line-height: 1.5; text-align: justify; letter-spacing: 0.02em; }
+        .btn-vi-option:hover .btn-vi-option-sub { color: #cbd5e1; }
+
+        .btn-vi-gate { 
+            background: linear-gradient(90deg, #e11d48 0%, #f59e0b 100%); 
+            border: none; 
+            color: white;
+            font-weight: 800; 
+            font-size: 1.02rem; 
+            border-radius: 14px; 
+            padding: 15px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            box-shadow: 0 4px 25px rgba(225, 29, 72, 0.4);
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            width: 100%;
+            text-decoration: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: auto;
+            line-height: 1.4;
+        }
+        .btn-vi-gate:hover { 
+            transform: translateY(-3px); 
+            box-shadow: 0 12px 35px rgba(245, 158, 11, 0.5), 0 0 15px var(--movie-cyber-cyan);
+            filter: brightness(1.1);
+        }
+
+        .btn-vi-share-trigger {
+            background: #009fda; 
+            border: none; 
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 1.02rem;
+            border-radius: 14px;
+            padding: 15px;
+            cursor: pointer;
+            letter-spacing: 1px;
+            transition: all 0.25s ease;
+            margin-top: 12px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.4;
+            box-shadow: 0 4px 20px rgba(0, 159, 218, 0.3);
+        }
+        .btn-vi-share-trigger:hover { filter: brightness(1.1); box-shadow: 0 6px 25px rgba(0, 159, 218, 0.5); }
+
+        .btn-vi-retry {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #cbd5e1;
+            font-weight: 700;
+            font-size: 1.02rem;
+            border-radius: 14px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin-top: 12px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            line-height: 1.4;
+        }
+        .btn-vi-retry:hover { background: rgba(255,255,255,0.05); color: #fff; border-color: rgba(255, 255, 255, 0.3); }
+
+        .vi-disclaimer-text {
+            font-size: 0.72rem;
+            line-height: 1.6;
+            color: #64748b;
+            text-align: center;
+            letter-spacing: 0.02em;
+            margin-top: 14px;
+            padding: 10px 12px;
+            opacity: 0.85;
+        }
+
+        /* 🎬 附圖規格看板樣式 */
+        .vi-layout-card { 
+            border: 1px solid rgba(255, 255, 255, 0.06); 
+            padding: 20px; 
+            border-radius: 16px; 
+            background: rgba(12, 10, 26, 0.85); 
+            width: 100%; 
+            text-align: left;
+            margin-top: 5px;
+        }
+        .vi-card-time { font-size: 1.6rem; font-weight: 800; color: #ffffff; display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }
+        .vi-time-tag { background: #6366f1; font-size: 0.85rem; padding: 2px 8px; border-radius: 6px; font-weight: bold; }
+        .vi-card-meta-line { font-size: 0.88rem; color: #cbd5e1; display: flex; align-items: center; gap: 6px; margin-bottom: 8px; letter-spacing: 0.02em; }
+        
+        /* 雙欄並列排矩陣 */
+        .vi-flow-container { display: flex; gap: 12px; width: 100%; margin-top: 14px; margin-bottom: 14px; }
+        .vi-dialogue-flow { flex: 1; padding: 4px 0 4px 10px; min-height: 65px; }
+        .vi-flow-am { border-left: 3px solid var(--movie-gold-amber); }
+        .vi-flow-pm { border-left: 3px solid var(--movie-cyber-cyan); }
+        
+        .vi-flow-title-am { color: var(--movie-gold-amber); font-size: 0.88rem; font-weight: bold; margin-bottom: 2px; }
+        .vi-flow-title-pm { color: var(--movie-cyber-cyan); font-size: 0.88rem; font-weight: bold; margin-bottom: 2px; }
+        .vi-flow-text { font-size: 0.8rem; color: #ffffff; line-height: 1.4; display: block; word-break: keep-all; }
+        
+        .vi-card-footer-info { 
+            font-size: 0.76rem; 
+            color: #94a3b8; 
+            line-height: 1.8; 
+            border-top: 1px solid rgba(255, 255, 255, 0.08); 
+            padding-top: 12px; 
+            margin-top: 4px; 
+            white-space: nowrap; 
+            letter-spacing: -0.01em; 
+        }
+
+        /* 📱 行動裝置端與手機寬度微調 */
+        @media (max-width: 480px) {
+            body { padding: 12px 6px; }
+            #game-container { border-radius: 20px; }
+            .screen { padding: 14px 16px 20px 16px; gap: 12px; }
+            .vi-title-text-simple { font-size: 1.2rem; margin: 4px 0; }
+            .vi-options-stack { gap: 12px; }
+            .btn-vi-option { padding: 14px 16px; line-height: 1.5; }
+            .btn-vi-option-title { font-size: 0.92rem; margin-bottom: 4px; }
+            .btn-vi-option-sub { font-size: 0.78rem; line-height: 1.4; }
+            .vi-desc { font-size: 0.88rem; margin: 8px auto 16px auto; text-align: justify; }
+            .btn-vi-gate, .btn-vi-share-trigger, .btn-vi-retry { padding: 13px; font-size: 0.95rem; }
+            .vi-flow-container { flex-direction: column; gap: 10px; }
+            .vi-dialogue-flow { min-height: auto; }
+            .vi-card-footer-info { font-size: 0.72rem; letter-spacing: -0.02em; }
+            .vi-disclaimer-text { font-size: 0.68rem; padding: 8px 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-grid"></div>
+
+<div id="game-container">
+    
+    <div class="nty-global-brand-header">
+        <img src="新譽管理LOGO-1-260x44.png" alt="新譽管理有限公司" class="nty-brand-logo">
+    </div>
+
+    <div id="screen-start" class="screen active">
+        <div class="vi-image-stage-container">
+            <img src="首頁圖.png" alt="拍片人的多重宇宙 - 影視青年入局攻略" class="vi-stage-banner">
+        </div>
+
+        <div class="vi-desc animate-delay-1">
+            置身資訊不對稱的影視江湖，每個人都在尋找自己的定位。你準備好跟著這場測驗，開箱真實的行業生態、探索屬於你的職涯方向了嗎？
+        </div>
+        <button class="btn-vi-gate" onclick="goNext('screen-q1')">尋找你的影視定位 🎬</button>
+    </div>
+
+    <div id="screen-q1" class="screen">
+        <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
+        
+        <div class="vi-image-stage-container">
+            <img src="q1.jpg" alt="預告片初剪不如預期" class="vi-stage-banner">
+        </div>
+
+        <div class="vi-options-stack animate-delay-1">
+            <div class="vi-title-text-simple">預告片初剪不如預期</div>
+            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">前導片首剪出爐，劇情順了，但總覺得少了點什麼。檢討會上，你最受不了的是——</p>
+            
+            <button class="btn-vi-option" onclick="recordAnswer('A', 'screen-q2')">
+                <span class="btn-vi-option-title">✨ 沒有記憶點，等於白拍</span>
+                <span class="btn-vi-option-sub">「一成不變太可惜，寧可打掉重練，也要把情感張力逼出來。」</span>
+            </button>
+            
+            <button class="btn-vi-option" onclick="recordAnswer('B', 'screen-q2')">
+                <span class="btn-vi-option-title">📊 細節不到位，一格都不放過</span>
+                <span class="btn-vi-option-sub">「好素材不能浪費，爆肝也要把調色、音效、剪輯點磨到極致。」</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="screen-q2" class="screen">
+        <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
+        
+        <div class="vi-image-stage-container">
+            <img src="q2.jpg" alt="主要贊助商強行插入置入" class="vi-stage-banner">
+        </div>
+
+        <div class="vi-options-stack animate-delay-1">
+            <div class="vi-title-text-simple">主要贊助商強行置入</div>
+            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">贊助商臨時要求，在最安靜的文戲核心硬塞產品特寫。你的底線是——</p>
+            
+            <button class="btn-vi-option" onclick="recordAnswer('A', 'screen-q3')">
+                <span class="btn-vi-option-title">🛠️ 專業，是用來守住畫面的</span>
+                <span class="btn-vi-option-sub">「換個鏡頭語言、微調劇本或靠後期掩蓋，畫面高級感不能垮。」</span>
+            </button>
+            
+            <button class="btn-vi-option" onclick="recordAnswer('B', 'screen-q3')">
+                <span class="btn-vi-option-title">🤝 危機，也能轉成亮點</span>
+                <span class="btn-vi-option-sub">「能留下來最重要，直接打破第四道牆，把置入變成行銷話題。」</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="screen-q3" class="screen">
+        <div class="vi-meta-header"><span>影視多重宇宙｜階段探索</span></div>
+        
+        <div class="vi-image-stage-container">
+            <img src="q3.jpg" alt="預算見底的最後關頭" class="vi-stage-banner">
+        </div>
+
+        <div class="vi-options-stack animate-delay-1">
+            <div class="vi-title-text-simple">預算見底的最後關頭</div>
+            <p style="font-size:0.88rem; color:#cbd5e1; text-align:justify; margin-bottom:6px; word-break: normal; overflow-wrap: break-word; line-height: 1.6; letter-spacing: 0.03em;">殺青前夕突然暴雨，場地器材今天到期，預算也見底。你的決策原則 is——</p>
+            
+            <button class="btn-vi-option" onclick="processFinalResult('A')">
+                <span class="btn-vi-option-title">🎯 環境再克難，故事不能打折</span>
+                <span class="btn-vi-option-sub">「果斷改用手持攝影搶拍、臨場改雨戲，情感張力絕不妥協。」</span>
+            </button>
+            
+            <button class="btn-vi-option" onclick="processFinalResult('B')">
+                <span class="btn-vi-option-title">🛡️ 安全過關，才有下一部</span>
+                <span class="btn-vi-option-sub">「盤點資源、砍場次，在不超支、不冒險的前提下穩穩收工。」</span>
+            </button>
+        </div>
+    </div>
+
+    <div id="screen-result" class="screen">
+        <div class="vi-meta-header"><span>多重宇宙解鎖報告</span></div>
+        
+        <div id="result-title" class="vi-title-text-simple" style="font-size:1.2rem; color:var(--movie-gold-amber); margin:10px 0 5px 0;"></div>
+        
+        <div class="result-card-viewport">
+            <img id="vi-character-card" src="" alt="個人職人魂角色卡" class="vi-character-card-img">
+        </div>
+
+        <div class="animate-delay-1" style="width: 100%; display: flex; flex-direction: column; gap: 15px;">
+            <p id="result-desc" class="vi-result-text-body"></p>
+            
+            <div class="vi-layout-card">
+                <div class="vi-card-time">
+                    09.12 <span class="vi-time-tag">六</span>
+                    <span style="font-size:1.1rem; font-weight:normal; color:#ffffff; margin-left: 6px;">09:00 - 16:05</span>
+                </div>
+                
+                <div class="vi-card-meta-line">
+                    <span>📌 地點：</span><span id="dynamic-venue-display">新北市政府 507 會議廳</span>
+                </div>
+                
+                <div class="vi-card-meta-line">
+                    <span>🎬 職人實戰論壇排程：</span>
+                </div>
+                
+                <div class="vi-flow-container">
+                    <div class="vi-dialogue-flow vi-flow-am">
+                        <div class="vi-flow-title-am">上午場</div>
+                        <span class="vi-flow-text">實戰技術：<br>商業浪潮下的進化攻略</span>
+                    </div>
+
+                    <div class="vi-dialogue-flow vi-flow-pm">
+                        <div class="vi-flow-title-pm">下午場</div>
+                        <span class="vi-flow-text">產業地圖：<br>誰能拿到留下來的門票？</span>
+                    </div>
+                </div>
+
+                <div class="vi-card-footer-info">
+                    <strong>黃金講者群：</strong>瞿友寧、陳彥銘、陳妤、王師、程偉豪、雷震卿<br>
+                    <strong>論壇主持：</strong>Shine 紀冠宇
+                </div>
+            </div>
+        </div>
+
+        <div class="action-group animate-delay-2" style="display:flex; flex-direction:column; width:100%; margin-top: 5px;">
+            <a id="dynamic-signup-link" href="#" target="_blank" class="btn-vi-gate" onclick="trackSignupClick()">探索完成，免費報名卡位 🎫</a>
+            <button class="btn-vi-share-trigger" onclick="handleShareAction()">
+                <span>分享我的影視定位 🔗</span>
+            </button>
+            <button class="btn-vi-retry" onclick="resetGame()">🌀 重返多重宇宙再測一次</button>
+            
+            <div class="vi-disclaimer-text">
+                ✨ 本測驗為趣味性質之特質探索遊戲，並非正式職涯評測工具，結果僅供參考，實際職涯規劃請依個人狀況審慎評估。
+            </div>
+            <div style="height: 10px;"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const DYNAMIC_VENUE_NAME = "新北市政府 507 會議廳"; 
+    const OFFICIAL_SIGNUP_URL = "https://www.thinkyu.com/course/celebrity-lectures/";
+
+    let userPath = [];
+    let currentRoleTitle = "";
+
+    function goNext(screenId) {
+        document.querySelectorAll('.screen').forEach(s => {
+            s.classList.remove('active');
+            s.style.display = 'none';
+        });
+        
+        const targetScreen = document.getElementById(screenId);
+        targetScreen.classList.add('active');
+        targetScreen.style.display = 'flex';
+        
+        document.getElementById('game-container').scrollTop = 0; 
+    }
+
+    function recordAnswer(choice, nextScreenId) {
+        userPath.push(choice);
+        goNext(nextScreenId);
+    }
+
+    function resetGame() {
+        userPath = [];
+        currentRoleTitle = "";
+        goNext('screen-start');
+    }
+
+    function trackSignupClick() {
+        if (typeof gtag === 'function') {
+            gtag('event', 'click_signup', {
+                'event_category': 'Engagement',
+                'event_label': '免費報名卡位'
+            });
+        }
+    }
+
+    function handleShareAction() {
+        if (typeof gtag === 'function') {
+            gtag('event', 'click_share', {
+                'event_category': 'Engagement',
+                'event_label': currentRoleTitle || '分享行動'
+            });
+        }
+
+        const baseUrl = window.location.href.split('?')[0];
+        const shareTitle = "拍片人的多重宇宙 - 測驗結果";
+        const shareText = `我在「拍片人的多重宇宙」解鎖了專屬影視特質：${currentRoleTitle}！快來開箱你的電影職人靈魂，9/12 一起免費卡位實戰論壇，跟著金馬導演與大師們開箱業界運作規則！\n講座地點：${DYNAMIC_VENUE_NAME}\n探索連結：`;
+
+        if (navigator.share) {
+            navigator.share({ title: shareTitle, text: shareText, url: baseUrl })
+            .then(() => console.log('分享成功'))
+            .catch((error) => console.log('取消分享:', error));
+        } else {
+            navigator.clipboard.writeText(`${shareText}\n${baseUrl}`).then(() => {
+                alert('完整特質文案與連結已成功複製到您的剪貼簿！快去貼上分享吧！✨');
+            }).catch(() => {
+                alert('複製連結失敗，請直接複製瀏覽器網址列連結進行分享。');
+            });
+        }
+    }
+
+    function processFinalResult(lastChoice) {
+        userPath.push(lastChoice);
+        const finalPathKey = userPath.join('');
+        
+        let title = "";
+        let desc = "";
+        let imgSrc = "";
+
+        switch(finalPathKey) {
+            case 'AAA':
+                title = "【 故事本本 】";
+                imgSrc = "故事本本.png"; 
+                desc = "你常常在捷運上、在路上看著路人發呆，因為你腦袋裡早就在幫他們安排身世和對白
